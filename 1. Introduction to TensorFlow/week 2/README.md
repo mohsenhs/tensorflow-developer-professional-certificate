@@ -75,6 +75,8 @@ model.fit(training_images, training_labels, epochs=5)
 
 model.evaluate(test_images, test_labels)
 ```
+-==============================
+from:https://datascience.stackexchange.com/questions/41921/sparse-categorical-crossentropy-vs-categorical-crossentropy-keras-accuracy
 
 Use sparse categorical crossentropy when your classes are mutually exclusive (e.g. when each sample belongs exactly to one class) and categorical crossentropy when one sample can have multiple classes or labels are soft probabilities (like [0.5, 0.3, 0.2]).
 
@@ -89,13 +91,7 @@ For case when classes are exclusive, you don't need to sum over them - for each 
 This allows to conserve time and memory. Consider case of 10000 classes when they are mutually exclusive - just 1 log instead of summing up 10000 for each sample, just one integer instead of 10000 floats.
 
 Formula is the same in both cases, so no impact on accuracy should be there.
-
-Share
-Edit
-Follow
-Flag
-edited Sep 14, 2019 at 13:54
-answere
+==================
 
 Callbacks function.
 ```python
