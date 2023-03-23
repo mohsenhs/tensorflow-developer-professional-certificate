@@ -76,6 +76,27 @@ model.fit(training_images, training_labels, epochs=5)
 model.evaluate(test_images, test_labels)
 ```
 
+Use sparse categorical crossentropy when your classes are mutually exclusive (e.g. when each sample belongs exactly to one class) and categorical crossentropy when one sample can have multiple classes or labels are soft probabilities (like [0.5, 0.3, 0.2]).
+
+Formula for categorical crossentropy (S - samples, C - classess, s∈c
+ - sample belongs to class c) is:
+
+$−1N∑s∈S∑c∈C1s∈clogp(s∈c)$
+
+For case when classes are exclusive, you don't need to sum over them - for each sample only non-zero value is just  −logp(s∈c)
+  for true class c.
+
+This allows to conserve time and memory. Consider case of 10000 classes when they are mutually exclusive - just 1 log instead of summing up 10000 for each sample, just one integer instead of 10000 floats.
+
+Formula is the same in both cases, so no impact on accuracy should be there.
+
+Share
+Edit
+Follow
+Flag
+edited Sep 14, 2019 at 13:54
+answere
+
 Callbacks function.
 ```python
 class myCallback(tf.keras.callbacks.Callback):
