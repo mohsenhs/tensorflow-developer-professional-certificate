@@ -76,6 +76,7 @@ model.fit(training_images, training_labels, epochs=5)
 model.evaluate(test_images, test_labels)
 ```
 -==============================
+
 from:https://datascience.stackexchange.com/questions/41921/sparse-categorical-crossentropy-vs-categorical-crossentropy-keras-accuracy
 
 Use sparse categorical crossentropy when your classes are mutually exclusive (e.g. when each sample belongs exactly to one class) and categorical crossentropy when one sample can have multiple classes or labels are soft probabilities (like [0.5, 0.3, 0.2]).
@@ -118,7 +119,21 @@ callbacks = myCallback()
 # modification
 model.fit(training_images, training_labels, epochs=5, callbacks=[callbacks])
 ```
+=========
 
+https://www.cs.cmu.edu/~bhiksha/courses/deeplearning/Spring.2019/archive-f19/www-bak11-22-2019/document/note/hwnotes/HW1p1.html
+Sigmoid: $y = \frac{1}{1 + e^{-z}}$
+Tanh: $y = \tanh(z)$
+Relu: $y = \max(z,0)$
+Softplus: $y = \log(1 + e^z)$
+Leaky Relu: $y = \max(z, \alpha z)$, where $0 \lt \alpha \lt 1$ and is typically a small number like 0.01.
+Elu: \[ y = \begin{cases} z,~~z\gt 0 \\ \alpha(e^z - 1)~~z \leq 0 \end{cases} \]
+
+
+![image](https://user-images.githubusercontent.com/7461963/227137766-c82a9cb5-d501-430a-b673-2d16756403a5.png)
+
+
+======
 ## Ungraded Lab
 * Lab 1: [Get hands-on with computer vision](https://github.com/https-deeplearning-ai/tensorflow-1-public/blob/main/C1/W2/ungraded_labs/C1_W2_Lab_1_beyond_hello_world.ipynb)
 * Lab 2: [See how to implement Callbacks](https://github.com/https-deeplearning-ai/tensorflow-1-public/blob/main/C1/W2/ungraded_labs/C1_W2_Lab_2_callbacks.ipynb)
